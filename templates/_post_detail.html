@@ -1,0 +1,8 @@
+<div class="post-detail" id="{{ post._id }}">
+    <h3 class="author">{% if post.real_name %}{{ post.real_name }}{% else %}{{ post.username }}{% end %}</h3>
+    <img class="avatar" src="{{ post.avatar_url }}">
+    <p class="upvotes">{{ post.upvotes }} votes</p>
+    <p>{{ post.pubdate|date }}</p>
+    <img class="feature" src="{{ post.photo }}">
+    <p class="text">{{ post.content|short }}</p>
+</div>
