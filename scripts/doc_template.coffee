@@ -60,6 +60,7 @@ event =
     headline: ""
     year: 2012
     month: 6
+    day: 24
     time_start: "00:00"
     time_end: "00:00"
     street: ""
