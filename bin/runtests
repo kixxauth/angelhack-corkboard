@@ -1,0 +1,5 @@
+#!/bin/bash
+bindir="$(cd `dirname $0` && pwd)"
+repo="$(dirname "$bindir")"
+
+node "$repo/test/runtests.js"
