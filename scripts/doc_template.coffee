@@ -58,6 +58,7 @@ post =
 event =
     venue_name: ""
     headline: ""
+    description: ""
     year: 2012
     month: 6
     day: 24
