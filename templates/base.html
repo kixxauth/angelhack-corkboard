@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<<html>
+<html>
 <head>
     <title>{% block title %}Corkboard{% endblock %}</title>
 </head>
 <body>
     <ul>
-        <li{% if active === 'stream' %} class="active"{% endif %}>Stream</li>
-        <li{% if active === 'events' %} class="active"{% endif %}>Events</li>
-        <li{% if active === 'adverts' %} class="active"{% endif %}>Adverts</li>
+        {% block nav %}
+        <li{% if active == 'stream' %} class="active"{% endif %}>Stream</li>
+        <li{% if active == 'events' %} class="active"{% endif %}>Events</li>
+        <li{% if active == 'adverts' %} class="active"{% endif %}>Adverts</li>
+        {% endblock %}
     </ul>
     {% block content %}{% endblock %}
     <p>End {{ today|date }}</p>
