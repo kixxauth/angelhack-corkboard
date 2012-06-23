@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<<html>
+<head>
+    <title>{% block title %}Corkboard{% endblock %}</title>
+</head>
+<body>
+    <ul>
+        <li{% if active === 'stream' %} class="active"{% endif %}>Stream</li>
+        <li{% if active === 'events' %} class="active"{% endif %}>Events</li>
+        <li{% if active === 'adverts' %} class="active"{% endif %}>Adverts</li>
+    </ul>
+    {% block content %}{% endblock %}
+    <p>End {{ today|date }}</p>
+    <button> Go to {{ yesterday|date }}</button>
+</body>
+</html>
