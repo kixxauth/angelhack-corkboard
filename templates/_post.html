@@ -1,0 +1,5 @@
+<div class="post" id="{{ post._id }}">
+    <img class="feature" src="{{ post.photo }}">
+    <h3 class="author">{% if post.real_name %}{{ post.real_name }}{% else %}{{ post.username }}{% end %}</h3>
+    <p class="text">{{ post.content|short }}</p>
+</div>

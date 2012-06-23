@@ -1,0 +1,8 @@
+<div class="event-detail" id="{{ event._id }}">
+    <h3 class="title">{{ event.headline }}</a></h3>
+    <h4 class="subtitle">At {{ event.venue }}</h4>
+    <img src="{{ event.image }}">
+    <p class="location">{{ event|get_event_address }}</p>
+    <p class="date">{{ event|get_event_date|date }}</p>
+    <p class="text">{{ event.description }}</p>
+</div>
