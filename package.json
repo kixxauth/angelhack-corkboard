@@ -4,6 +4,7 @@
 "description": "Project for AngelHack event 2012",
     "dependencies": {
         "q": "0.8.2",
+        "swig": "0.11.2",
         "cradle": "0.6.3"
     },
     "devDependencies": {
