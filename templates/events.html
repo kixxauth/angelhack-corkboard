@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block nav %}
+    {% set active = "events" %}
+    {% parent %}
+{% endblock %}
+{% block content %}
+    {% for item in items %}
+        {% if item.type === "Event" %}
+            {% set event = item %}
+            {% include "_event.html" with event %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
