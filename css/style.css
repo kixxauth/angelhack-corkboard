@@ -439,7 +439,7 @@ p, h3, h2, h1 {
 
 .nav {
 	overflow: hidden;
-	background: #333;
+	background: #444;
 }
 .nav .tab {
 	width: 50%;
@@ -451,6 +451,9 @@ p, h3, h2, h1 {
 	line-height: 50px;
 	text-align: center;
 	text-decoration: none;
+}
+.nav .tab-link.active {
+	background: #3399ff;
 }
 .nav a.tab-link {
 	color: #fff;
@@ -490,16 +493,41 @@ p, h3, h2, h1 {
 	margin-left: 58px;
 }
 
-
-
-
-
-
-
-
-
-
-
+/* big-event */
+.big-event .inner {
+	border: 1px solid #aaa;
+	overflow: hidden;
+	margin: 6px;
+	padding: 1em;
+	background: #fff;
+}
+.big-event .top-controls {
+	background: #333;
+}
+.big-event .top-controls a{
+	display: block;
+	height: 50px;
+	line-height: 50px;
+	color: #fff;
+	text-decoration: none;
+	margin-left: 24px;
+}
+.big-event .venue, .big-event .date {
+	text-align: center;
+}
+.big-event .venue,
+.big-event .description,
+.big-event .map,
+.big-event .foot-controls,
+.big-event .address {
+	margin-top: .5em;
+}
+.big-event .address {
+	font-weight: bold;
+}
+.big-event .foot-controls {
+	float: right;
+}
 
 
 

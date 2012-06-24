@@ -1,26 +1,55 @@
 {% extends 'base.html' %}
 {% block content %}
-<nav class="nav">
-<p class="tab"><a class="tab-link" href="#stream">stream</a></p>
-<p class="tab"><a class="tab-link" href="#events">events</a></p>
-</nav>
 
-<div id="stream-feed" class="items stream">
-    {% for item in items %}
-        {% if item.type === "Post" %}
-            {% set post = item %}
-            {% include "_post.html" %}
-        {% else %}
+<div id="feeds">
+    <nav class="nav">
+    <p class="tab"><a class="tab-link link-stream" href="#stream">stream</a></p>
+    <p class="tab"><a class="tab-link link-events" href="#events">events</a></p>
+    </nav>
+
+    <div id="stream-feed" class="items stream">
+        {% for item in items %}
+            {% if item.type === "Post" %}
+                {% set post = item %}
+                {% include "_post.html" %}
+            {% else %}
+                {% set event = item %}
+                {% include "_event.html" %}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div id="events-feed" class="items events" style="display:none;">
+        {% for item in events %}
             {% set event = item %}
             {% include "_event.html" %}
-        {% endif %}
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
 
-<div id="events-feed" class="items events" style="display:none;">
-    {% for item in events %}
-        {% set event = item %}
-        {% include "_event.html" %}
-    {% endfor %}
+{% for event in events %}
+<div class="big-event" id="big-{{ event._id }}" style="display:none;">
+    <p class="top-controls"><a class="close-button" href="#close-big">back</a></p>
+    <div class="inner">
+    <p class="event-header">
+        <strong class="title">{{ event.venue_name }}</strong><br />
+        <em class="score">{{ event.upvotes }} points</em>
+    </p>
+    <h3 class="venue">{{ event.headline }}</h3>
+    <p class="date">June 24th {{ event.time_start }} - {{ event.time_end }}</p>
+    <p class="description">{{ event.description }}</p>
+    <p class="address">
+        <span class="street">{{ event.street }}</span><br />
+        <span class="city">{{ event.city }}</span>,
+        <span class="state">{{ event.state }}</span>
+        <span class="zip">{{ event.zip }}</span>
+    </p>
+    <p class="map">
+        <img src="/images/map.png" width="240px" height="240px" />
+    </p>
+    <p class="foot-controls"><a class="close-button" href="#close-big">close</a></p>
+    </div>
 </div>
+{% endfor %}
+
 {% endblock %}
