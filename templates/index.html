@@ -3,11 +3,10 @@
     {% for item in items %}
         {% if item.type === "Post" %}
             {% set post = item %}
-            {% include "_post.html" with post %}
+            {% include "_post.html" %}
         {% else %}
             {% set event = item %}
-            <p>{{ event.headline }}</p>
-            {% include "_event.html" with event %}
+            {% include "_event.html" %}
         {% endif %}
     {% endfor %}
 {% endblock %}

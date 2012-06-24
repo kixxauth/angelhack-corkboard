@@ -1,4 +1,13 @@
 <div class="event" id="{{ event._id }}">
     <h3 class="title">{{ event.headline }}</h3>
-    <p class="date">{{ event.date|get_event_date|date }}</p>
+    <h3 class="venue">{{ event.venue_name }}</h3>
+		<p class="date">June 24th {{ event.time_start }} - {{ event.time_end }}</p>
+		<!--
+		<p class="description">{{ event.description }}</p>
+		<p><span class="street">{{ event.street }}</span><br />
+		<span class="city">{{ event.city }}</span>,
+		<span class="state">{{ event.state }}</span>
+		<span class="zip">{{ event.zip }}</span>
+		</p>
+		-->
 </div>

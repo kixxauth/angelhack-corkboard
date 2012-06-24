@@ -1,5 +1,12 @@
 <div class="post" id="{{ post._id }}">
-    <img class="feature" src="{{ post.photo }}">
-    <h3 class="author">{% if post.real_name %}{{ post.real_name }}{% else %}{{ post.username }}{% end %}</h3>
-    <p class="text">{{ post.content|short }}</p>
+		{% if post.avatar_url %}
+    <img class="feature" src="{{ post.avatar_url }}" width="80px">
+		{% endif %}
+    <h3 class="author">{% if post.real_name %}{{ post.real_name }}{% else %}{{ post.username }}{% endif %}</h3>
+    <p class="content">{{ post.content }}</p>
+		<!--
+		{% if post.photo %}
+    <img class="feature" src="{{ post.photo }}" width="150px">
+		{% endif %}
+		-->
 </div>

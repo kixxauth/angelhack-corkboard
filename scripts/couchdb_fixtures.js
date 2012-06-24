@@ -185,10 +185,20 @@ function gPutDocument(aDB) {
                 doc.type = 'Post';
             } else {
                 doc.type = 'Event';
+                if (!doc.day) {
+                    doc.day = 24;
+                }
             }
 
             if (!doc.upvotes) {
                 doc.upvotes = Math.ceil(Math.random() * 80) * 4;
+            }
+
+            if (doc.photo === 'http://') {
+                doc.photo = '';
+            }
+            if (doc.avatar_url === 'http://') {
+                doc.avatar_url = '';
             }
         }
 
