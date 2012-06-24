@@ -1,6 +1,9 @@
 <div class="event" id="{{ event._id }}">
-    <h3 class="title">{{ event.headline }}</h3>
-    <h3 class="venue">{{ event.venue_name }}</h3>
+		<p class="event-header">
+			<strong class="title">{{ event.venue_name }}</strong><br />
+			<em class="score">{{ event.upvotes }} points</em>
+		</p>
+    <h3 class="venue">{{ event.headline }}</h3>
 		<p class="date">June 24th {{ event.time_start }} - {{ event.time_end }}</p>
 		<!--
 		<p class="description">{{ event.description }}</p>

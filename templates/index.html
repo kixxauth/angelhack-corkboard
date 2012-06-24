@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+<nav class="nav">
+<p class="tab"><a class="tab-link" href="#stream">stream</a></p>
+<p class="tab"><a class="tab-link" href="#events">events</a></p>
+</nav>
+
+<div id="stream-feed" class="items stream">
     {% for item in items %}
         {% if item.type === "Post" %}
             {% set post = item %}
@@ -9,4 +15,12 @@
             {% include "_event.html" %}
         {% endif %}
     {% endfor %}
+</div>
+
+<div id="events-feed" class="items events" style="display:none;">
+    {% for item in events %}
+        {% set event = item %}
+        {% include "_event.html" %}
+    {% endfor %}
+</div>
 {% endblock %}

@@ -2,8 +2,12 @@
 <html>
 <head>
     <title>{% block title %}Corkboard{% endblock %}</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     {% block content %}{% endblock %}
+    <script src="zepto.min.js"></script>
+    <script src="client.coffee"></script>
 </body>
 </html>

@@ -1,9 +1,20 @@
 <div class="post" id="{{ post._id }}">
 		{% if post.avatar_url %}
-    <img class="feature" src="{{ post.avatar_url }}" width="80px">
+		<div class="avatar">
+			<img src="{{ post.avatar_url }}" width="50px">
+		</div>
+		<div class="content half">
+		{% else %}
+		<div class="content full">
 		{% endif %}
-    <h3 class="author">{% if post.real_name %}{{ post.real_name }}{% else %}{{ post.username }}{% endif %}</h3>
-    <p class="content">{{ post.content }}</p>
+			<p class="post-header">
+				<em class="score">{{ post.upvotes }} points</em>
+				by <strong class="author">
+					{% if post.real_name %}{{ post.real_name }}{% else %}{{ post.username }}{% endif %}
+				</strong>
+			</p>
+			<p class="post-content">{{ post.content }}</p>
+		</div>
 		<!--
 		{% if post.photo %}
     <img class="feature" src="{{ post.photo }}" width="150px">

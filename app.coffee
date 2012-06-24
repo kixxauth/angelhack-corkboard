@@ -16,15 +16,20 @@ EM.endpoint({
     handler: ->
         tmpl = SWIG.compileFile('index.html')
 
+        endpoint = @
         DAT.getFeed().fail(@fail).then (res) =>
             items = res.map (row) ->
                 return row
 
-            console.log(items)
-            text = tmpl.render({items: items})
-            if typeof text isnt 'string'
-                text = text.render()
-            @respond(200, 'html', text)
+            DAT.getEvents().fail(@fail).then (res) =>
+                events = res.map (row) ->
+                    return row
+
+                text = tmpl.render({items: items, events: events})
+                if typeof text isnt 'string'
+                    text = text.render()
+                endpoint.respond(200, 'html', text)
+                return
             return
 
         return
