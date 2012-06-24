@@ -6,7 +6,7 @@ var mFS = require('fs')
 
   , mOP = require('operetta')
   , mUT = require('../lib/utils')
-  , mCOUCH = require('../lib/couch')
+  , CRADLE = require('cradle')
 
 var gProcess = process;
 var gOptparser = new mOP.Operetta();
@@ -60,11 +60,8 @@ function gMain(aOpts) {
     }
 
     dirname = mPA.basename(oDir).replace(/\/$/, '');
-    if (!/_test_?/.test(dirname)) {
-        throw new Error("'"+ dirname +"' is not a test database!");
-    }
 
-    db = new mCOUCH.createConnection(connectionSpec).use(dirname);
+    db = new CRADLE.Connection().database('corkboard_mobi');
     gDeleteDocuments(db, function () {
         if (oNoLoad) {
             console.log("Done deleting documents. Exiting...");
@@ -84,8 +81,10 @@ function gDeleteDocuments(aDB, aCallback) {
         }
 
         var iCount = rows.length;
+        var row;
 
-        rows.forEach(function (row) {
+        for (var i = 0; i < rows.length; i += 1) {
+            row = rows[i];
             aDB.remove(row.id, row.value.rev, function (err, res) {
                 iCount = iCount - 1;
 
@@ -98,14 +97,14 @@ function gDeleteDocuments(aDB, aCallback) {
                     aCallback();
                 }
             });
-        });
+        }
     }
 
     aDB.get('_all_docs', function (err, res) {
         if (err) {
             throw err;
         }
-        return deleteDocs(res.body.rows);
+        return deleteDocs(res);
     });
     return;
 }
@@ -175,16 +174,22 @@ function gLoadDocuments(aDir, aEmit) {
 
 function gPutDocument(aDB) {
     return function (filename, doc) {
-        var id = doc._id || mUT.uid();
+        var parts = filename.split('.')
+          , id = parts[0]
+          , ext = parts[1]
 
-        aDB.updateOrCreate(id, doc, function (err, res) {
+        if (ext === 'js') {
+            id = "_design/" + id;
+        }
+
+        aDB.save(id, doc, function (err, res) {
             if (err) {
                 console.error("Problem PUTing document", id);
                 console.log(doc);
                 throw err;
             }
 
-            console.log(' --> ', filename, res.status, res.body);
+            console.log(' --> ', filename, res);
         });
     };
 
