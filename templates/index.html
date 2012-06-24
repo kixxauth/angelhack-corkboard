@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for item in items %}
+        {% if item.type === "Post" %}
+            {% set post = item %}
+            {% include "_post.html" with post %}
+        {% else %}
+            {% set event = item %}
+            <p>{{ event.headline }}</p>
+            {% include "_event.html" with event %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}

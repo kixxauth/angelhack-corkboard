@@ -18,3 +18,5 @@ TAGS
 
 # node modules
 node_modules/***
+
+*.log

@@ -1,0 +1,15 @@
+{
+"name": "angelhack-corkboard",
+"version": "0.1.0",
+"description": "Project for AngelHack event 2012",
+    "dependencies": {
+        "q": "0.8.2",
+        "swig": "0.11.2",
+        "cradle": "0.6.3"
+    },
+    "devDependencies": {
+        "coffee-script": "1.3.3",
+        "operetta": "0.0.5",
+        "treadmill":"2.0.1"
+    }
+}
