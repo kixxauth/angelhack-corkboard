@@ -1,10 +1,11 @@
 {
 "venue_name": "Grendel's Den Happy Hour",
-"headline": "We'll provide the booze. You provide the party",
+"headline": "We'll provide the booze. You provide the party.",
+"description": "We want to help you start your your night of bad decision making.  Grendel's is offering 2 for 1 drink specials for two and a half hours. Come join us to make memories you'll never remember.",
 "year": 2012,
 "month": 6,
 "time_start": "15:00",
-"time_end": "19:30",
+"time_end": "17:30",
 "street": "89 Winthrop St.",
 "city": "Cambridge",
 "state": "MA",
