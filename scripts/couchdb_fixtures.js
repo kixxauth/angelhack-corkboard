@@ -180,6 +180,16 @@ function gPutDocument(aDB) {
 
         if (ext === 'js') {
             id = "_design/" + id;
+        } else {
+            if (doc.content) {
+                doc.type = 'Post';
+            } else {
+                doc.type = 'Event';
+            }
+
+            if (!doc.upvotes) {
+                doc.upvotes = Math.ceil(Math.random() * 80) * 4;
+            }
         }
 
         aDB.save(id, doc, function (err, res) {
